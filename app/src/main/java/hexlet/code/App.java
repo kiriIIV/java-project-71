@@ -6,23 +6,29 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.nio.file.Path;
+import java.util.Map;
+import java.util.concurrent.Callable;
 
-@Command(name = "gendiff", mixinStandardHelpOptions = true,
+@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
         description = "Compares two configuration files and shows a difference.")
 
-public class App implements Runnable{
+public class App implements Callable<String> {
     @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
-    private Path filepath1;
+    private String filepath1;
 
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
-    private Path filepath2;
+    private String filepath2;
 
     @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
     String format = "stylish";
 
     @Override
-    public void run() {
+    public String call() throws Exception {
+        Map<String, Object> mapJson1 = ReadAndParse.parseJsonData(filepath1);
+        Map<String, Object> mapJson2 = ReadAndParse.parseJsonData(filepath2);
 
+        System.out.println(Differ.generate(mapJson1, mapJson2));
+        return "";
     }
 
     public static void main(String... args) throws Exception {
