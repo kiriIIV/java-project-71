@@ -1,3 +1,3 @@
 run-dist:
 	./gradlew installDist
-	./build/install/app/bin/app -h
+	./build/install/app/bin/app
