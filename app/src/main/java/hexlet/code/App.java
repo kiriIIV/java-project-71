@@ -1,8 +1,16 @@
 package hexlet.code;
 
-public class App {
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
+@Command(name = "gendiff", mixinStandardHelpOptions = true,
+        description = "Compares two configuration files and shows a difference.")
+
+public class App {
+    public static void main(String... args) {
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 }
