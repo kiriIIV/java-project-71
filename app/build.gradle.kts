@@ -3,6 +3,7 @@ plugins {
     id ("com.github.ben-manes.versions") version "0.52.0"
     application
     checkstyle
+    jacoco
 }
 
 
@@ -22,6 +23,11 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
 }
 
 application {
