@@ -18,7 +18,7 @@ public class ReadAndParse {
     public static String readFile(String readFilePath) throws Exception {
         Path path = getPath(readFilePath);
         if (!Files.exists(path)) {
-            throw new Exception("File " + path + " does not exists");
+            throw new Exception("File " + path + " doesn't exists");
         }
 
         return Files.readString(path).trim();
