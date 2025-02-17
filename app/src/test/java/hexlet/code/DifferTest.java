@@ -2,7 +2,8 @@ package hexlet.code;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
 
@@ -19,11 +20,11 @@ public class DifferTest {
 
     @Test
     public void testDiffer1() throws Exception {
-    var mapJson1 = ReadAndParse.parseJsonData(path1);
-    var mapJson2 = ReadAndParse.parseJsonData(path2);
-    String expected = Differ.generate(mapJson1, mapJson2);
-    String actual = ReadAndParse.readFile("src/test/resources/fixtures/resultDiffer1.txt");
-    assertEquals(expected, actual);
+        var mapJson1 = ReadAndParse.parseJsonData(path1);
+        var mapJson2 = ReadAndParse.parseJsonData(path2);
+        String expected = Differ.generate(mapJson1, mapJson2);
+        String actual = ReadAndParse.readFile("src/test/resources/fixtures/resultDiffer1.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
