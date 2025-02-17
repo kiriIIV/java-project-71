@@ -26,7 +26,7 @@ public class ReadAndParse {
     public static Map<String, Object> parseJsonData(String readFilePath) throws Exception {
         String jsonData = readFile(readFilePath);
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(jsonData, new TypeReference<Map<String,Object>>(){});
+        return objectMapper.readValue(jsonData, new TypeReference<Map<String, Object>>() { });
     }
 
 }
