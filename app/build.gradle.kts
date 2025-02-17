@@ -25,12 +25,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.jacocoTestReport {
-    reports {
-        xml.required.set(true)
-        html.required.set(false)
-    }
-}
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
 
 application {
     mainClass.set("hexlet.code.App")

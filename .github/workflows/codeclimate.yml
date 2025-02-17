@@ -22,12 +22,15 @@ jobs:
       - name: Run Tests with Coverage
         run: cd app && ./gradlew test jacocoTestReport
 
+      - name: Download Code Climate Test Reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > cc-test-reporter
+          chmod +x cc-test-reporter
+
       - name: Upload coverage to Code Climate
         env:
           CC_TEST_REPORTER: ${{ secrets.CC_TEST_REPORTER }}
         run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/latest/linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
-          cd app && ./cc-test-reporter format-coverage build/reports/jacoco/test/jacocoTestReport.xml --input-type jacoco
+          ./cc-test-reporter format-coverage app/build/reports/jacoco/test/jacocoTestReport.xml --input-type jacoco
           ./cc-test-reporter upload-coverage
