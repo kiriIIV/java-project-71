@@ -3,6 +3,7 @@ package hexlet.code;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -25,6 +26,9 @@ public class ReadAndParse {
 
     public static Map<String, Object> parseJsonData(String readFilePath) throws Exception {
         String jsonData = readFile(readFilePath);
+        if (jsonData.trim().isEmpty()) { // Проверяем пустой контент
+            return new LinkedHashMap<String, Object>();
+        }
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(jsonData, new TypeReference<Map<String, Object>>() { });
     }
