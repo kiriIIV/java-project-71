@@ -4,6 +4,7 @@
 ### Сравнение плоских файлов
 https://asciinema.org/a/QreQ7kiv2iQBBCx2uXPtdR8SH
 
+### Badges
 [![Build app](https://github.com/kiriIIV/java-project-71/actions/workflows/build.yml/badge.svg)](https://github.com/kiriIIV/java-project-71/actions/workflows/build.yml)
-<a href="https://codeclimate.com/github/kiriIIV/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/ed9f13feb75ad22877c1/maintainability" /></a>
+[![Code Climate](https://github.com/kiriIIV/java-project-71/actions/workflows/codeclimate.yml/badge.svg)](https://github.com/kiriIIV/java-project-71/actions/workflows/codeclimate.yml)
 
