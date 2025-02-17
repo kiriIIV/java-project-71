@@ -21,7 +21,7 @@ public class ReadAndParseTest {
     @Test
     public void testGetPath() {
         Path expected = ReadAndParse.getPath(path);
-        Path actual = Path.of("/Users/kirillvolk/java-project-71/app/src/test/resources/fixtures/file1.json");
+        Path actual = Path.of(path).toAbsolutePath().normalize();
         assertEquals(expected, actual);
     }
 
