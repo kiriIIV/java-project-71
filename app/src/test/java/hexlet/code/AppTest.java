@@ -18,11 +18,18 @@ public class AppTest {
 
     @Test
     public void test1() {
-        int exitCode = cmd.execute("src/main/resources/fixtures/file1.json",
-                "src/main/resources/fixtures/file2.json", "-f", "json");
+        int exitCode = cmd.execute("src/main/resources/fixtures/json/file1.json",
+                "src/main/resources/fixtures/json/file2.json", "-f", "json");
         assertEquals(0, exitCode);
-        assertEquals("src/main/resources/fixtures/file1.json", app.getFilepath1());
-        assertEquals("src/main/resources/fixtures/file2.json", app.getFilepath2());
+        assertEquals("src/main/resources/fixtures/json/file1.json", app.getFilepath1());
+        assertEquals("src/main/resources/fixtures/json/file2.json", app.getFilepath2());
         assertEquals("json", app.format);
+    }
+
+    @Test
+    public void test2() {
+        int exitCode = cmd.execute("src/main/resources/fixtures/json/file1.json",
+                "src/main/resources/fixtures/json/file2.json");
+        assertEquals("stylish", app.format);
     }
 }

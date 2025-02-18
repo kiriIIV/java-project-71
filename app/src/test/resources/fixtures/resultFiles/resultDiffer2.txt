@@ -1,6 +1,1 @@
-{
-  - follow: false
-  - host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-}
+[[- id, - key1, - numbers1, - numbers2, - setting1, - setting2, - setting3], [45, value1, [1, 2, 3, 4], [2, 3, 4, 5], Some value, 200, true]]
