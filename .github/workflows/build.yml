@@ -1,4 +1,4 @@
-name: Build app
+name: Build and Analyze
 
 on:
   - push
@@ -17,8 +17,7 @@ jobs:
       - uses: gradle/gradle-build-action@v3
         with:
           gradle-version: 8.12.1
-      - run: cd app && ./gradlew checkstyleMain
-      - run: cd app && ./gradlew test
+      - run: make -C app build
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
