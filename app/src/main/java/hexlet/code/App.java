@@ -23,10 +23,14 @@ public class App implements Callable<String> {
 
     @Override
     public String call() throws Exception {
-        Map<String, Object> mapJson1 = ReadAndParse.parseJsonData(filepath1);
-        Map<String, Object> mapJson2 = ReadAndParse.parseJsonData(filepath2);
+        try {
+            Map<String, Object> mapJson1 = Parser.parseData(filepath1);
+            Map<String, Object> mapJson2 = Parser.parseData(filepath2);
+            System.out.println(Differ.generate(mapJson1, mapJson2));
+        } catch (Exception e) {
+            throw new Exception("No such file in a directory");
+        }
 
-        System.out.println(Differ.generate(mapJson1, mapJson2));
         return "";
     }
 
