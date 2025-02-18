@@ -30,8 +30,12 @@ public class App implements Callable<String> {
         return "";
     }
 
-    public String getFilepath1() { return filepath1; }
-    public String getFilepath2() { return filepath2; }
+    public String getFilepath1() {
+        return filepath1;
+    }
+    public String getFilepath2() {
+        return filepath2;
+    }
 
     public static void main(String... args) throws Exception {
         int exitCode = new CommandLine(new App()).execute(args);
