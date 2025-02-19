@@ -26,3 +26,6 @@ chars1:
   - b
   - c
 chars2: false
+obj1:
+  nestedKey: value
+  isNested: true

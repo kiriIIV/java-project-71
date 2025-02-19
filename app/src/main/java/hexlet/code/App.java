@@ -5,8 +5,6 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "1.0",
@@ -25,18 +23,9 @@ public class App implements Callable<String> {
 
     @Override
     public String call() throws Exception {
-        if (format.equals("stylish")) {
-            try {
-                Map<String, Object> mapData1 = Parser.parseData(filepath1);
-                Map<String, Object> mapData2 = Parser.parseData(filepath2);
-                List<List<String>> listOfDiffs = Differ.generate(mapData1, mapData2);
-                System.out.println(Formater.stylishFormat(listOfDiffs));
-            } catch (Exception e) {
-                throw new Exception("No such file in a directory");
-            }
-        } else {
-            System.out.println("Wrong format");
-        }
+
+        String diff = Differ.generate(filepath1, filepath2, format);
+        System.out.println(diff);
 
         return "";
     }

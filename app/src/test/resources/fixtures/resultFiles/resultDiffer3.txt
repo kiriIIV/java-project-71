@@ -1,1 +1,0 @@
-[[+ key2, + numbers1, + numbers2, + setting1, + setting2, + setting3], [value2, [1, 2, 3, 4], [22, 33, 44, 55], Another value, 300, none]]

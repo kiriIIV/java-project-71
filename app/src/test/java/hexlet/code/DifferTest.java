@@ -26,74 +26,58 @@ public class DifferTest {
 
     @Test
     public void testJsonDiffer1() throws Exception {
-        var mapJson1 = Parser.parseData(jsonPath1);
-        var mapJson2 = Parser.parseData(jsonPath2);
-        var expected = Differ.generate(mapJson1, mapJson2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer1.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(jsonPath1, jsonPath2, "stylish");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish1.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testJsonDiffer2() throws Exception {
-        var mapJson1 = Parser.parseData(jsonPath1);
-        var mapJson2 = Parser.parseData(jsonEmptyPath);
-        var expected = Differ.generate(mapJson1, mapJson2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer2.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(jsonPath1, jsonEmptyPath, "stylish");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish2.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testJsonDiffer3() throws Exception {
-        var mapJson1 = Parser.parseData(jsonEmptyPath);
-        var mapJson2 = Parser.parseData(jsonPath2);
-        var expected = Differ.generate(mapJson1, mapJson2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer3.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(jsonEmptyPath, jsonPath2, "stylish");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish3.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testJsonDiffer4() throws Exception {
-        var mapJson1 = Parser.parseData(jsonEmptyPath);
-        var mapJson2 = Parser.parseData(jsonEmptyPath);
-        var expected = Differ.generate(mapJson1, mapJson2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer4.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(jsonEmptyPath, jsonEmptyPath, "stylish");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish4.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testJYAMLDiffer1() throws Exception {
-        var mapYAML1 = Parser.parseData(yamlPath1);
-        var mapYAML2 = Parser.parseData(yamlPath2);
-        var expected = Differ.generate(mapYAML1, mapYAML2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer1.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(yamlPath1, yamlPath2, "plain");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain1.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testYAMLDiffer2() throws Exception {
-        var mapYAML1 = Parser.parseData(yamlPath1);
-        var mapYAML2 = Parser.parseData(yamlEmptyPath);
-        var expected = Differ.generate(mapYAML1, mapYAML2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer2.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(yamlPath1, yamlEmptyPath, "plain");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain2.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testYAMLDiffer3() throws Exception {
-        var mapYAML1 = Parser.parseData(yamlEmptyPath);
-        var mapYAML2 = Parser.parseData(yamlPath2);
-        var expected = Differ.generate(mapYAML1, mapYAML2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer3.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(yamlEmptyPath, yamlPath2, "plain");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain3.txt");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testYAMLDiffer4() throws Exception {
-        var mapYAML1 = Parser.parseData(yamlEmptyPath);
-        var mapYAML2 = Parser.parseData(yamlEmptyPath);
-        var expected = Differ.generate(mapYAML1, mapYAML2);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDiffer4.txt");
-        assertEquals(expected.toString(), actual);
+        var actual = Differ.generate(yamlEmptyPath, yamlEmptyPath, "plain");
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain4.txt");
+        assertEquals(expected, actual);
     }
 
 }

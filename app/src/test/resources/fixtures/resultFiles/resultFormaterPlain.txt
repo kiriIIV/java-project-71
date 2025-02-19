@@ -1,0 +1,3 @@
+Property 'Item1' was added with value: 3.14
+Property 'Item2' was removed
+Property 'Item3' was removed

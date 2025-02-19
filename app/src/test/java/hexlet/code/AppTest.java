@@ -19,11 +19,12 @@ public class AppTest {
     @Test
     public void test1() {
         int exitCode = cmd.execute("src/main/resources/fixtures/json/file1.json",
-                "src/main/resources/fixtures/json/file2.json", "-f", "json");
+                "src/main/resources/fixtures/json/file2.json", "-f", "plain");
         assertEquals(0, exitCode);
         assertEquals("src/main/resources/fixtures/json/file1.json", app.getFilepath1());
         assertEquals("src/main/resources/fixtures/json/file2.json", app.getFilepath2());
-        assertEquals("json", app.format);
+        assertEquals("plain", app.format);
+
     }
 
     @Test

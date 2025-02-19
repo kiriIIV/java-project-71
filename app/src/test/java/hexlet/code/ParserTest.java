@@ -22,22 +22,22 @@ public class ParserTest {
 
     @Test
     public void testGetPathJson() {
-        Path expected = Parser.getPath(pathJson);
-        Path actual = Path.of(pathJson).toAbsolutePath().normalize();
+        Path actual = Parser.getPath(pathJson);
+        Path expected = Path.of(pathJson).toAbsolutePath().normalize();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testGetPathYAML() {
-        Path expected = Parser.getPath(pathYAML);
-        Path actual = Path.of(pathYAML).toAbsolutePath().normalize();
+        Path actual = Parser.getPath(pathYAML);
+        Path expected = Path.of(pathYAML).toAbsolutePath().normalize();
         assertEquals(expected, actual);
     }
 
     @Test
     public void testReadFile1() throws Exception {
-        String expected = Parser.readFile(pathJson);
-        String actual = Parser.readFile("src/test/resources/fixtures/json/jsonRead.txt");
+        String actual = Parser.readFile(pathJson);
+        String expected = Parser.readFile("src/test/resources/fixtures/json/jsonRead.txt");
         assertEquals(expected, actual);
     }
 
@@ -47,15 +47,15 @@ public class ParserTest {
     }
     @Test
     public void testParseJsonData1() throws Exception {
-        var expected = Parser.parseData("src/test/resources/fixtures/json/flat.json");
-        Map<String, Object> actual = Map.of("host", "hexlet.io", "timeout", 50,
+        var actual = Parser.parseData("src/test/resources/fixtures/json/flat.json");
+        Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", 50,
                 "proxy", "123.234.53.22", "follow", false);
         assertEquals(expected, actual);
     }
     @Test
     public void testParseJsonData2() throws Exception {
-        var expected = Parser.parseData("src/test/resources/fixtures/json/empty.json");
-        Map<String, Object> actual = Map.of();
+        var actual = Parser.parseData("src/test/resources/fixtures/json/empty.json");
+        Map<String, Object> expected = Map.of();
         assertEquals(expected, actual);
     }
     @Test
@@ -64,15 +64,15 @@ public class ParserTest {
     }
     @Test
     public void testParseYAMLData1() throws Exception {
-        var expected = Parser.parseData("src/test/resources/fixtures/yaml/flat.yaml");
-        Map<String, Object> actual = Map.of("host", "hexlet.io", "timeout", 50,
+        var actual = Parser.parseData("src/test/resources/fixtures/yaml/flat.yaml");
+        Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", 50,
                 "proxy", "123.234.53.22", "follow", false);
         assertEquals(expected, actual);
     }
     @Test
     public void testParseYAMLData2() throws Exception {
-        var expected = Parser.parseData("src/test/resources/fixtures/yaml/empty.yaml");
-        Map<String, Object> actual = Map.of();
+        var actual = Parser.parseData("src/test/resources/fixtures/yaml/empty.yaml");
+        Map<String, Object> expected = Map.of();
         assertEquals(expected, actual);
     }
     @Test

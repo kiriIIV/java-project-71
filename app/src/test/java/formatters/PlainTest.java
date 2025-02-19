@@ -1,7 +1,6 @@
-package hexlet.code;
+package formatters;
 
-import formatters.Plain;
-import formatters.Stylish;
+import hexlet.code.Parser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FormaterTest {
+public class PlainTest {
 
     private static List<List<Object>> dataList;
     @BeforeAll
@@ -22,23 +21,17 @@ public class FormaterTest {
     }
 
     @Test
-    public void test1() {
-        String actual = Formatter.chooseFormat(dataList, "stylish");
-        String expected = Stylish.stylishFormat(dataList);
+    public void test1() throws Exception {
+        String actual = Plain.plainFormat(dataList);
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultFormaterPlain.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void test2() {
-        String actual = Formatter.chooseFormat(dataList, "plain");
-        String expected = Plain.plainFormat(dataList);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void test3() {
-        String actual = Formatter.chooseFormat(dataList, "12345");
-        String expected = "Invalid format!";
+    public void test2() throws Exception {
+        List<List<Object>> emptyList = List.of();
+        String actual = Plain.plainFormat(emptyList);
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterPlain.txt");
         assertEquals(expected, actual);
     }
 }
