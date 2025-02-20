@@ -14,3 +14,6 @@ run-dist:
 
 report:
 	./gradlew jacocoTestReport
+
+clean:
+	./greadlew clean
