@@ -16,4 +16,4 @@ report:
 	./gradlew jacocoTestReport
 
 clean:
-	./greadlew clean
+	./gradlew clean
