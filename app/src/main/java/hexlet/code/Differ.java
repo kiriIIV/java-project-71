@@ -10,6 +10,11 @@ import java.util.TreeSet;
 
 public class Differ {
 
+    public static final int SIZE_OF_UPDATED_ELEMENT = 4;
+    public static final int INDEX_OF_STATUS_FOR_UPDATED = 3;
+    public static final int SIZE_OF_ELEMENT = 3;
+    public static final int INDEX_OF_STATUS_FOR_ELEMENT = 2;
+
     private static final ArrayList<List<Object>> STAT_OF_DATA = new ArrayList<>();
 
     public static String generate(String filePath1, String filePath2, String format) throws Exception {

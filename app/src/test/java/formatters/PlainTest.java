@@ -16,13 +16,13 @@ public class PlainTest {
     @BeforeAll
     public static void beforeAll() {
         dataList = new ArrayList<>();
-        dataList.add(List.of("Item1", 3.14, "added"));
+        dataList.add(List.of("Item1", false, "added"));
         dataList.add(List.of("Item2", true, "removed"));
-        dataList.add(List.of("Item3", 45, "removed"));
+        dataList.add(List.of("Item3", "house", "removed"));
     }
 
     @BeforeEach
-    public void beforeEach() {
+    public final void beforeEach() {
         Plain.cleanStringBuilder();
     }
 

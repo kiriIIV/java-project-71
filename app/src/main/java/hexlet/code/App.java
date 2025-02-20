@@ -19,10 +19,10 @@ public class App implements Callable<String> {
 
     @Option(names = {"-f", "--format"}, paramLabel = "format",
             defaultValue = "stylish", description = "output format [default: stylish]")
-    String format;
+    private String format;
 
     @Override
-    public String call() throws Exception {
+    public final String call() throws Exception {
 
         try {
             String diff = Differ.generate(filepath1, filepath2, format);
@@ -34,11 +34,14 @@ public class App implements Callable<String> {
         return "";
     }
 
-    public String getFilepath1() {
+    public final String getFilepath1() {
         return filepath1;
     }
-    public String getFilepath2() {
+    public final String getFilepath2() {
         return filepath2;
+    }
+    public final String getFormat() {
+        return format;
     }
 
     public static void main(String... args) throws Exception {

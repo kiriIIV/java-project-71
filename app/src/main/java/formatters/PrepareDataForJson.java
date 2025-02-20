@@ -23,23 +23,23 @@ public class PrepareDataForJson {
         this.statusKey = statusKey;
     }
 
-    public Object getKey() {
+    public final Object getKey() {
         return key;
     }
 
-    public Object getOldValue() {
+    public final Object getOldValue() {
         return oldValue;
     }
 
-    public Object getNewValue() {
+    public final Object getNewValue() {
         return newValue;
     }
 
-    public Object getStatusKey() {
+    public final Object getStatusKey() {
         return statusKey;
     }
 
-    public Object getValue() {
+    public final Object getValue() {
         return value;
     }
 }

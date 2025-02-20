@@ -11,7 +11,7 @@ public class AppTest {
     private CommandLine cmd;
 
     @BeforeEach
-    public void beforeEach() {
+    public final void beforeEach() {
         app = new App();
         cmd = new CommandLine(app);
     }
@@ -23,7 +23,7 @@ public class AppTest {
         assertEquals(0, exitCode);
         assertEquals("src/main/resources/fixtures/json/file1.json", app.getFilepath1());
         assertEquals("src/main/resources/fixtures/json/file2.json", app.getFilepath2());
-        assertEquals("plain", app.format);
+        assertEquals("plain", app.getFormat());
 
     }
 
@@ -31,6 +31,6 @@ public class AppTest {
     public void test2() {
         int exitCode = cmd.execute("src/main/resources/fixtures/json/file1.json",
                 "src/main/resources/fixtures/json/file2.json");
-        assertEquals("stylish", app.format);
+        assertEquals("stylish", app.getFormat());
     }
 }

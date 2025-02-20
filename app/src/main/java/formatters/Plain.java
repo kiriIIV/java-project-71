@@ -1,5 +1,7 @@
 package formatters;
 
+import hexlet.code.Differ;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class Plain {
 
         for (List<Object> statOfElement : statOfData) {
 
-            if (statOfElement.size() == 4) {
+            if (statOfElement.size() == Differ.SIZE_OF_UPDATED_ELEMENT) {
                 updatedFrom(statOfElement);
                 updatedTo(statOfElement);
             } else if (statOfElement.get(2).equals("removed")) {

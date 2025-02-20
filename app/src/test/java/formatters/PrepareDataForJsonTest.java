@@ -3,24 +3,25 @@ package formatters;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class PrepareDataForJsonTest {
 
     @Test
     public void test1() {
-        PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", 123,
-                456, "updated");
+        PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", true,
+                false, "updated");
         assertEquals("key", prepareDataForJson.getKey());
-        assertEquals(123, prepareDataForJson.getOldValue());
-        assertEquals(456, prepareDataForJson.getNewValue());
+        assertEquals(true, prepareDataForJson.getOldValue());
+        assertEquals(false, prepareDataForJson.getNewValue());
         assertEquals("updated", prepareDataForJson.getStatusKey());
     }
 
     @Test
     public void test2() {
-        PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", 123, "removed");
+        PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", null, "removed");
         assertEquals("key", prepareDataForJson.getKey());
-        assertEquals(123, prepareDataForJson.getValue());
+        assertNull(prepareDataForJson.getValue());
         assertEquals("removed", prepareDataForJson.getStatusKey());
     }
 }

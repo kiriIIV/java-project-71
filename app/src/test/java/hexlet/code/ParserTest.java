@@ -48,7 +48,7 @@ public class ParserTest {
     @Test
     public void testParseJsonData1() throws Exception {
         var actual = Parser.parseData("src/test/resources/fixtures/json/flat.json");
-        Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", 50,
+        Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", true,
                 "proxy", "123.234.53.22", "follow", false);
         assertEquals(expected, actual);
     }
@@ -65,7 +65,7 @@ public class ParserTest {
     @Test
     public void testParseYAMLData1() throws Exception {
         var actual = Parser.parseData("src/test/resources/fixtures/yaml/flat.yaml");
-        Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", 50,
+        Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", false,
                 "proxy", "123.234.53.22", "follow", false);
         assertEquals(expected, actual);
     }

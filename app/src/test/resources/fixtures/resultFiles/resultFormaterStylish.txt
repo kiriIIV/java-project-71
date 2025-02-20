@@ -1,4 +1,4 @@
 {
-  + Item2: 3.14
+  + Item2: false
   - Item3: true
 }

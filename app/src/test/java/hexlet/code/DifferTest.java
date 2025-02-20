@@ -28,7 +28,7 @@ public class DifferTest {
         yamlEmptyPath = "src/test/resources/fixtures/yaml/empty.yaml";
     }
     @BeforeEach
-    public void beforeEach() {
+    public final void beforeEach() {
         Stylish.cleanStringBuilder();
         Plain.cleanStringBuilder();
         Differ.clearData();

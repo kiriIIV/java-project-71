@@ -2,6 +2,7 @@ package formatters;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.Differ;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,13 @@ public class Json {
         }
 
         for (List<Object> statOfElement : statOfData) {
-            if (statOfElement.size() == 4 && !statOfElement.get(3).equals("same data")) {
+            if (statOfElement.size() == Differ.SIZE_OF_UPDATED_ELEMENT
+                    && !statOfElement.get(Differ.SIZE_OF_UPDATED_ELEMENT - 1).equals("same data")) {
                 DATA_FOR_JSON.add(new PrepareDataForJson(statOfElement.get(0), statOfElement.get(1),
-                        statOfElement.get(2), statOfElement.get(3)));
-            } else if (!statOfElement.get(2).equals("same data")) {
+                        statOfElement.get(2), statOfElement.get(Differ.INDEX_OF_STATUS_FOR_UPDATED)));
+            } else if (!statOfElement.get(Differ.INDEX_OF_STATUS_FOR_ELEMENT).equals("same data")) {
                 DATA_FOR_JSON.add(new PrepareDataForJson(statOfElement.get(0), statOfElement.get(1),
-                        statOfElement.get(2)));
+                        statOfElement.get(Differ.INDEX_OF_STATUS_FOR_ELEMENT)));
             }
         }
 

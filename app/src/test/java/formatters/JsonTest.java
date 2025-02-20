@@ -15,14 +15,14 @@ public class JsonTest {
     @BeforeAll
     public static void beforeAll() {
         dataList = new ArrayList<>();
-        dataList.add(List.of("Item1", 3.14, "added"));
+        dataList.add(List.of("Item1", "rat", "added"));
         dataList.add(List.of("Item2", true, "removed"));
-        dataList.add(List.of("Item3", 45, "removed"));
-        dataList.add(List.of("Item4", 45, false, "updated"));
+        dataList.add(List.of("Item3", "123", "removed"));
+        dataList.add(List.of("Item4", true, false, "updated"));
     }
 
     @BeforeEach
-    public void beforeEach() {
+    public final void beforeEach() {
         Json.clearData();
     }
 

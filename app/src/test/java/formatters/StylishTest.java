@@ -16,12 +16,12 @@ public class StylishTest {
     @BeforeAll
     public static void beforeAll() {
         dataList = new ArrayList<>();
-        dataList.add(List.of("Item2", 3.14, "added"));
+        dataList.add(List.of("Item2", false, "added"));
         dataList.add(List.of("Item3", true, "removed"));
     }
 
     @BeforeEach
-    public void beforeEach() {
+    public final void beforeEach() {
         Stylish.cleanStringBuilder();
     }
 

@@ -1,6 +1,6 @@
 [ {
   "key" : "Item1",
-  "value" : 3.14,
+  "value" : "rat",
   "statusKey" : "added"
 }, {
   "key" : "Item2",
@@ -8,11 +8,11 @@
   "statusKey" : "removed"
 }, {
   "key" : "Item3",
-  "value" : 45,
+  "value" : "123",
   "statusKey" : "removed"
 }, {
   "key" : "Item4",
-  "oldValue" : 45,
+  "oldValue" : true,
   "newValue" : false,
   "statusKey" : "updated"
 } ]
