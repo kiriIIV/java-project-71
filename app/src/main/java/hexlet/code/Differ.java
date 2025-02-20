@@ -48,7 +48,9 @@ public class Differ {
             }
         }
 
-        return STAT_OF_DATA;
+        ArrayList<List<Object>> result = new ArrayList<>(STAT_OF_DATA);
+        clearData();
+        return result;
     }
 
     public static void addStatusOfKey(Object key, Object value, String status) {
