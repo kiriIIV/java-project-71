@@ -26,7 +26,9 @@ public class Json {
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(DATA_FOR_JSON);
+        List<PrepareDataForJson> result = new ArrayList<>(DATA_FOR_JSON);
+        clearData();
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
 
     }
 

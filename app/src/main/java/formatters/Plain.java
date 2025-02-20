@@ -27,7 +27,10 @@ public class Plain {
         if (!STRING_BUILDER.isEmpty() && STRING_BUILDER.charAt(STRING_BUILDER.length() - 1) == '\n') {
             STRING_BUILDER.deleteCharAt(STRING_BUILDER.length() - 1);
         }
-        return STRING_BUILDER.toString();
+
+        String result = STRING_BUILDER.toString();
+        cleanStringBuilder();
+        return result;
     }
 
     public static void updatedFrom(List<Object> statOfElement) {

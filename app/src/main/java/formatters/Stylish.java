@@ -27,7 +27,10 @@ public class Stylish {
             }
         }
 
-        return STRING_BUILDER.append("}").toString();
+        String result = STRING_BUILDER + "}";
+        cleanStringBuilder();
+
+        return result;
     }
 
     public static void sameData(List<Object> statOfElement) {
