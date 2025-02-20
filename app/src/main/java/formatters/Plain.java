@@ -4,53 +4,73 @@ import java.util.List;
 import java.util.Map;
 
 public class Plain {
+
+    private static final StringBuilder STRING_BUILDER = new StringBuilder();
+
     public static String plainFormat(List<List<Object>> statOfData) {
-        StringBuilder stringBuilder = new StringBuilder();
 
         if (statOfData.isEmpty()) {
-            return stringBuilder.toString();
+            return STRING_BUILDER.toString();
         }
 
-        for (int i = 0; i < statOfData.size(); i++) {
+        for (List<Object> statOfElement : statOfData) {
 
-            List<Object> statOfElement = statOfData.get(i);
+            if (statOfElement.get(2).equals("updatedFrom")) {
+                updatedFrom(statOfElement);
 
+            } else if (statOfElement.get(2).equals("updatedTo")) {
+                updatedTo(statOfElement);
 
-            if (statOfElement.get(2).equals("updated")) {
-                if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
-                        || statOfElement.get(1) instanceof List) {
-                    stringBuilder.append(String.format("Property '%s' was updated."
-                            + " From [complex value] to ", statOfElement.getFirst()));
-                } else {
-                    stringBuilder.append(String.format("Property '%s' was updated."
-                            + " From %s to ", statOfElement.getFirst(), statOfElement.get(1)));
-                }
-            } else if (statOfElement.get(2).equals("")) {
-                if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
-                        || statOfElement.get(1) instanceof List) {
-                    stringBuilder.append("[complex value]").append("\n");
-                } else {
-                    stringBuilder.append(String.format("%s", statOfElement.get(1))).append("\n");
-                }
             } else if (statOfElement.get(2).equals("removed")) {
-                stringBuilder.append(String.format("Property '%s' was removed", statOfElement.getFirst()))
-                        .append("\n");
+                removedElement(statOfElement);
+
             } else if (statOfElement.get(2).equals("added")) {
-                if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
-                        || statOfElement.get(1) instanceof List) {
-                    stringBuilder.append(String.format("Property '%s' was added with value: [complex value]",
-                            statOfElement.getFirst())).append("\n");
-                } else {
-                    stringBuilder.append(String.format("Property '%s' was added with value: %s",
-                            statOfElement.getFirst(), statOfElement.get(1))).append("\n");
-                }
+                addedElement(statOfElement);
             }
         }
-
-        if (!stringBuilder.isEmpty() && stringBuilder.charAt(stringBuilder.length() - 1) == '\n') {
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        if (!STRING_BUILDER.isEmpty() && STRING_BUILDER.charAt(STRING_BUILDER.length() - 1) == '\n') {
+            STRING_BUILDER.deleteCharAt(STRING_BUILDER.length() - 1);
         }
+        return STRING_BUILDER.toString();
+    }
 
-        return stringBuilder.toString();
+    public static void updatedFrom(List<Object> statOfElement) {
+        if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
+                || statOfElement.get(1) instanceof List) {
+            STRING_BUILDER.append(String.format("Property '%s' was updated."
+                    + " From [complex value] to ", statOfElement.getFirst()));
+        } else {
+            STRING_BUILDER.append(String.format("Property '%s' was updated."
+                    + " From %s to ", statOfElement.getFirst(), statOfElement.get(1)));
+        }
+    }
+
+    public static void updatedTo(List<Object> statOfElement) {
+        if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
+                || statOfElement.get(1) instanceof List) {
+            STRING_BUILDER.append("[complex value]").append("\n");
+        } else {
+            STRING_BUILDER.append(String.format("%s", statOfElement.get(1))).append("\n");
+        }
+    }
+
+    public static void removedElement(List<Object> statOfElement) {
+        STRING_BUILDER.append(String.format("Property '%s' was removed", statOfElement.getFirst()))
+                .append("\n");
+    }
+
+    public static void addedElement(List<Object> statOfElement) {
+        if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
+                || statOfElement.get(1) instanceof List) {
+            STRING_BUILDER.append(String.format("Property '%s' was added with value: [complex value]",
+                    statOfElement.getFirst())).append("\n");
+        } else {
+            STRING_BUILDER.append(String.format("Property '%s' was added with value: %s",
+                    statOfElement.getFirst(), statOfElement.get(1))).append("\n");
+        }
+    }
+
+    public static void cleanStringBuilder() {
+        STRING_BUILDER.setLength(0);
     }
 }

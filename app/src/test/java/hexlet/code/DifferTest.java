@@ -1,6 +1,9 @@
 package hexlet.code;
 
+import formatters.Plain;
+import formatters.Stylish;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +25,12 @@ public class DifferTest {
         yamlPath1 = "src/test/resources/fixtures/yaml/file1.yaml";
         yamlPath2 = "src/test/resources/fixtures/yaml/file2.yaml";
         yamlEmptyPath = "src/test/resources/fixtures/yaml/empty.yaml";
+    }
+    @BeforeEach
+    public void beforeEach() {
+        Stylish.cleanStringBuilder();
+        Plain.cleanStringBuilder();
+        Differ.clearData();
     }
 
     @Test

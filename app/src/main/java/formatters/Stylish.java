@@ -4,35 +4,59 @@ import java.util.List;
 
 public class Stylish {
 
+    private static final StringBuilder STRING_BUILDER = new StringBuilder();
+
     public static String stylishFormat(List<List<Object>> statOfData) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{").append("\n");
+
+        STRING_BUILDER.append("{").append("\n");
 
         if (statOfData.isEmpty()) {
-            stringBuilder.append("}");
-            return stringBuilder.toString();
+            return STRING_BUILDER.append("}").toString();
         }
 
         for (List<Object> statOfElement: statOfData) {
             if (statOfElement.get(2).equals("same data")) {
-                stringBuilder.append(String.format("%s%s: %s", " ".repeat(4), statOfElement.get(0),
-                        statOfElement.get(1))).append("\n");
-            } else if (statOfElement.get(2).equals("updated")) {
-                stringBuilder.append(String.format("%s- %s: %s", " ".repeat(2), statOfElement.get(0),
-                        statOfElement.get(1))).append("\n");
-            } else if (statOfElement.get(2).equals("")) {
-                stringBuilder.append(String.format("%s+ %s: %s", " ".repeat(2), statOfElement.get(0),
-                        statOfElement.get(1))).append("\n");
+                sameData(statOfElement);
+            } else if (statOfElement.get(2).equals("updatedFrom")) {
+                updatedFrom(statOfElement);
+            } else if (statOfElement.get(2).equals("updatedTo")) {
+                updatedTo(statOfElement);
             } else if (statOfElement.get(2).equals("removed")) {
-                stringBuilder.append(String.format("%s- %s: %s", " ".repeat(2), statOfElement.get(0),
-                        statOfElement.get(1))).append("\n");
+                removed(statOfElement);
             } else if (statOfElement.get(2).equals("added")) {
-                stringBuilder.append(String.format("%s+ %s: %s", " ".repeat(2), statOfElement.get(0),
-                        statOfElement.get(1))).append("\n");
+                added(statOfElement);
             }
         }
 
-        stringBuilder.append("}");
-        return stringBuilder.toString();
+        return STRING_BUILDER.append("}").toString();
+    }
+
+    public static void sameData(List<Object> statOfElement) {
+        STRING_BUILDER.append(String.format("%s%s: %s", " ".repeat(4), statOfElement.get(0),
+                statOfElement.get(1))).append("\n");
+    }
+
+    public static void updatedFrom(List<Object> statOfElement) {
+        STRING_BUILDER.append(String.format("%s- %s: %s", " ".repeat(2), statOfElement.get(0),
+                statOfElement.get(1))).append("\n");
+    }
+
+    public static void updatedTo(List<Object> statOfElement) {
+        STRING_BUILDER.append(String.format("%s+ %s: %s", " ".repeat(2), statOfElement.get(0),
+                statOfElement.get(1))).append("\n");
+    }
+
+    public static void removed(List<Object> statOfElement) {
+        STRING_BUILDER.append(String.format("%s- %s: %s", " ".repeat(2), statOfElement.get(0),
+                statOfElement.get(1))).append("\n");
+    }
+
+    public static void added(List<Object> statOfElement) {
+        STRING_BUILDER.append(String.format("%s+ %s: %s", " ".repeat(2), statOfElement.get(0),
+                statOfElement.get(1))).append("\n");
+    }
+
+    public static void cleanStringBuilder() {
+        STRING_BUILDER.setLength(0);
     }
 }

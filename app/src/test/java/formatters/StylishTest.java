@@ -2,6 +2,7 @@ package formatters;
 
 import hexlet.code.Parser;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -17,6 +18,11 @@ public class StylishTest {
         dataList = new ArrayList<>();
         dataList.add(List.of("Item2", 3.14, "added"));
         dataList.add(List.of("Item3", true, "removed"));
+    }
+
+    @BeforeEach
+    public void beforeEach() {
+        Stylish.cleanStringBuilder();
     }
 
     @Test

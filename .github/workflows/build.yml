@@ -19,7 +19,6 @@ jobs:
           gradle-version: 8.12.1
       - run: make -C app clean
       - run: make -C app build
-      - run: make -C app report
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:

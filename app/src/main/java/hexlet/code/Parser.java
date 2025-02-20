@@ -3,7 +3,7 @@ package hexlet.code;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 public class Parser {
+    private static ObjectMapper objectMapper;
+    private static String data;
 
     public static Path getPath(String readFilePath) {
         return Paths.get(readFilePath).toAbsolutePath().normalize();
@@ -26,25 +28,29 @@ public class Parser {
     }
 
     public static Map<String, Object> parseData(String readFilePath) throws Exception {
-        ObjectMapper objectMapper = null;
-        String data = "";
         if (readFilePath.endsWith(".json")) {
-            data = readFile(readFilePath);
-            if (data.trim().isEmpty()) {
-                return new LinkedHashMap<String, Object>();
-            }
-            objectMapper = new ObjectMapper();
+            jsonFormat(readFilePath);
         } else if (readFilePath.endsWith(".yml") || readFilePath.endsWith(".yaml")) {
-            data = readFile(readFilePath);
-            if (data.trim().isEmpty()) {
-                return new LinkedHashMap<String, Object>();
-            }
-            objectMapper = new ObjectMapper(new YAMLFactory());
+            yamlFormat(readFilePath);
         } else {
             throw new Exception("Invalid format");
         }
 
-        return objectMapper.readValue(data, new TypeReference<Map<String, Object>>() { });
+        if (data.trim().isEmpty()) {
+            return new HashMap<String, Object>();
+        }
+
+        return objectMapper.readValue(data, new TypeReference<HashMap<String, Object>>() { });
+    }
+
+    public static void jsonFormat(String readFilePath) throws Exception {
+        data = readFile(readFilePath);
+        objectMapper = new ObjectMapper();
+    }
+
+    public static void yamlFormat(String readFilePath) throws Exception {
+        data = readFile(readFilePath);
+        objectMapper = new ObjectMapper(new YAMLFactory());
     }
 
 }

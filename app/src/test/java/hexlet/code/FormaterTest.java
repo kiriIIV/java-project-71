@@ -3,6 +3,7 @@ package hexlet.code;
 import formatters.Plain;
 import formatters.Stylish;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,9 +22,16 @@ public class FormaterTest {
         dataList.add(List.of("Item3", 45, "removed"));
     }
 
+    @BeforeEach
+    public void beforeEach() {
+        Plain.cleanStringBuilder();
+        Stylish.cleanStringBuilder();
+    }
+
     @Test
     public void test1() {
         String actual = Formatter.chooseFormat(dataList, "stylish");
+        Stylish.cleanStringBuilder();
         String expected = Stylish.stylishFormat(dataList);
         assertEquals(expected, actual);
     }
@@ -31,6 +39,7 @@ public class FormaterTest {
     @Test
     public void test2() {
         String actual = Formatter.chooseFormat(dataList, "plain");
+        Plain.cleanStringBuilder();
         String expected = Plain.plainFormat(dataList);
         assertEquals(expected, actual);
     }
