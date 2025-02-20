@@ -9,11 +9,17 @@ import java.util.TreeSet;
 
 
 public class Differ {
+
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
+
+        ArrayList<List<Object>> statOfData = getStatOfData(filePath1, filePath2);
+        return Formatter.chooseFormat(statOfData, format);
+    }
+
+    public static ArrayList<List<Object>> getStatOfData(String filePath1, String filePath2) throws Exception {
 
         Map<String, Object> data1 = Parser.parseData(filePath1);
         Map<String, Object> data2 = Parser.parseData(filePath2);
-
         ArrayList<List<Object>> statOfData = new ArrayList<>();
 
         Set<String> setOfKeys = new TreeSet<>(data1.keySet());
@@ -57,6 +63,6 @@ public class Differ {
             }
         }
 
-        return Formatter.chooseFormat(statOfData, format);
+        return statOfData;
     }
 }

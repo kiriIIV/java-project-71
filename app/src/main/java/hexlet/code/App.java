@@ -24,8 +24,12 @@ public class App implements Callable<String> {
     @Override
     public String call() throws Exception {
 
-        String diff = Differ.generate(filepath1, filepath2, format);
-        System.out.println(diff);
+        try {
+            String diff = Differ.generate(filepath1, filepath2, format);
+            System.out.println(diff);
+        } catch (Exception e) {
+            System.out.println("No such file in a directory");
+        }
 
         return "";
     }
