@@ -10,7 +10,7 @@ lint:
 
 run-dist:
 	./gradlew installDist
-	./build/install/app/bin/app -f json src/main/resources/fixtures/yaml/file1.yaml src/main/resources/fixtures/yaml/file2.yaml
+	./build/install/app/bin/app -f json src/main/resources/fixtures/json/file1.json src/main/resources/fixtures/json/file2.json
 
 report:
 	./gradlew jacocoTestReport
