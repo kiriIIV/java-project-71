@@ -30,60 +30,28 @@ public class Differ {
             if (data1.containsKey(key)) {
                 if (data2.containsKey(key)) {
                     if ((data1.get(key) + "").equals(data2.get(key) + "")) {
-                        sameValue(key, data1.get(key));
+                        addStatusOfKey(key, data1.get(key), "same data");
 
                     } else {
-                        updatedFrom(key, data1.get(key));
-                        updatedTo(key, data2.get(key));
+                        addStatusOfKey(key, data1.get(key), "updatedFrom");
+                        addStatusOfKey(key, data2.get(key), "updatedTo");
                     }
                 } else {
-                    removedValue(key, data1.get(key));
+                    addStatusOfKey(key, data1.get(key), "removed");
                 }
             } else {
-                addedValue(key, data2.get(key));
+                addStatusOfKey(key, data2.get(key), "added");
             }
         }
 
         return STAT_OF_DATA;
     }
 
-    public static void sameValue(Object key, Object value) {
+    public static void addStatusOfKey(Object key, Object value, String status) {
         ArrayList<Object> statOfElement = new ArrayList<>();
         statOfElement.add(key);
         statOfElement.add(value);
-        statOfElement.add("same data");
-        STAT_OF_DATA.add(statOfElement);
-    }
-
-    public static void updatedFrom(Object key, Object value) {
-        ArrayList<Object> statOfElement = new ArrayList<>();
-        statOfElement.add(key);
-        statOfElement.add(value);
-        statOfElement.add("updatedFrom");
-        STAT_OF_DATA.add(statOfElement);
-    }
-
-    public static void updatedTo(Object key, Object value) {
-        ArrayList<Object> statOfElement = new ArrayList<>();
-        statOfElement.add(key);
-        statOfElement.add(value);
-        statOfElement.add("updatedTo");
-        STAT_OF_DATA.add(statOfElement);
-    }
-
-    public static void addedValue(Object key, Object value) {
-        ArrayList<Object> statOfElement = new ArrayList<>();
-        statOfElement.add(key);
-        statOfElement.add(value);
-        statOfElement.add("added");
-        STAT_OF_DATA.add(statOfElement);
-    }
-
-    public static void removedValue(Object key, Object value) {
-        ArrayList<Object> statOfElement = new ArrayList<>();
-        statOfElement.add(key);
-        statOfElement.add(value);
-        statOfElement.add("removed");
+        statOfElement.add(status);
         STAT_OF_DATA.add(statOfElement);
     }
 
