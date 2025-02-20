@@ -31,10 +31,8 @@ public class Differ {
                 if (data2.containsKey(key)) {
                     if ((data1.get(key) + "").equals(data2.get(key) + "")) {
                         addStatusOfKey(key, data1.get(key), "same data");
-
                     } else {
-                        addStatusOfKey(key, data1.get(key), "updatedFrom");
-                        addStatusOfKey(key, data2.get(key), "updatedTo");
+                        addStatusOfKey(key, data1.get(key), data2.get(key), "updated");
                     }
                 } else {
                     addStatusOfKey(key, data1.get(key), "removed");
@@ -51,6 +49,15 @@ public class Differ {
         ArrayList<Object> statOfElement = new ArrayList<>();
         statOfElement.add(key);
         statOfElement.add(value);
+        statOfElement.add(status);
+        STAT_OF_DATA.add(statOfElement);
+    }
+
+    public static void addStatusOfKey(Object key, Object oldValue, Object newValue, String status) {
+        ArrayList<Object> statOfElement = new ArrayList<>();
+        statOfElement.add(key);
+        statOfElement.add(oldValue);
+        statOfElement.add(newValue);
         statOfElement.add(status);
         STAT_OF_DATA.add(statOfElement);
     }

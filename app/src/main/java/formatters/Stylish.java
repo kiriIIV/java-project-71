@@ -15,12 +15,11 @@ public class Stylish {
         }
 
         for (List<Object> statOfElement: statOfData) {
-            if (statOfElement.get(2).equals("same data")) {
-                sameData(statOfElement);
-            } else if (statOfElement.get(2).equals("updatedFrom")) {
+            if (statOfElement.size() == 4) {
                 updatedFrom(statOfElement);
-            } else if (statOfElement.get(2).equals("updatedTo")) {
                 updatedTo(statOfElement);
+            } else if (statOfElement.get(2).equals("same data")) {
+                sameData(statOfElement);
             } else if (statOfElement.get(2).equals("removed")) {
                 removed(statOfElement);
             } else if (statOfElement.get(2).equals("added")) {
@@ -43,7 +42,7 @@ public class Stylish {
 
     public static void updatedTo(List<Object> statOfElement) {
         STRING_BUILDER.append(String.format("%s+ %s: %s", " ".repeat(2), statOfElement.get(0),
-                statOfElement.get(1))).append("\n");
+                statOfElement.get(2))).append("\n");
     }
 
     public static void removed(List<Object> statOfElement) {

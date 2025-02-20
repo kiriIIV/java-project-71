@@ -15,15 +15,11 @@ public class Plain {
 
         for (List<Object> statOfElement : statOfData) {
 
-            if (statOfElement.get(2).equals("updatedFrom")) {
+            if (statOfElement.size() == 4) {
                 updatedFrom(statOfElement);
-
-            } else if (statOfElement.get(2).equals("updatedTo")) {
                 updatedTo(statOfElement);
-
             } else if (statOfElement.get(2).equals("removed")) {
                 removedElement(statOfElement);
-
             } else if (statOfElement.get(2).equals("added")) {
                 addedElement(statOfElement);
             }
@@ -46,11 +42,11 @@ public class Plain {
     }
 
     public static void updatedTo(List<Object> statOfElement) {
-        if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
-                || statOfElement.get(1) instanceof List) {
+        if (statOfElement.get(2) instanceof Object[] || statOfElement.get(2) instanceof Map
+                || statOfElement.get(2) instanceof List) {
             STRING_BUILDER.append("[complex value]").append("\n");
         } else {
-            STRING_BUILDER.append(String.format("%s", statOfElement.get(1))).append("\n");
+            STRING_BUILDER.append(String.format("%s", statOfElement.get(2))).append("\n");
         }
     }
 

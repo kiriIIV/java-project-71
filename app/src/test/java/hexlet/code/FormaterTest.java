@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import formatters.Json;
 import formatters.Plain;
 import formatters.Stylish;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,10 +28,11 @@ public class FormaterTest {
     public void beforeEach() {
         Plain.cleanStringBuilder();
         Stylish.cleanStringBuilder();
+        Json.clearData();
     }
 
     @Test
-    public void test1() {
+    public void test1() throws JsonProcessingException {
         String actual = Formatter.chooseFormat(dataList, "stylish");
         Stylish.cleanStringBuilder();
         String expected = Stylish.stylishFormat(dataList);
@@ -37,7 +40,7 @@ public class FormaterTest {
     }
 
     @Test
-    public void test2() {
+    public void test2() throws JsonProcessingException {
         String actual = Formatter.chooseFormat(dataList, "plain");
         Plain.cleanStringBuilder();
         String expected = Plain.plainFormat(dataList);
@@ -45,7 +48,15 @@ public class FormaterTest {
     }
 
     @Test
-    public void test3() {
+    public void test3() throws JsonProcessingException {
+        String actual = Formatter.chooseFormat(dataList, "json");
+        Json.clearData();
+        String expected = Json.jsonFormat(dataList);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test4()  throws JsonProcessingException {
         String actual = Formatter.chooseFormat(dataList, "12345");
         String expected = "Invalid format!";
         assertEquals(expected, actual);
