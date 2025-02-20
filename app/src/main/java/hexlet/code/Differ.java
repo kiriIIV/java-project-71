@@ -18,6 +18,12 @@ public class Differ {
         return Formatter.chooseFormat(statOfData, format);
     }
 
+    public static String generate(String filePath1, String filePath2) throws Exception {
+
+        ArrayList<List<Object>> statOfData = getStatOfData(filePath1, filePath2);
+        return Formatter.chooseFormat(statOfData, "stylish");
+    }
+
     public static ArrayList<List<Object>> getStatOfData(String filePath1, String filePath2) throws Exception {
 
         Map<String, Object> data1 = Parser.parseData(filePath1);
