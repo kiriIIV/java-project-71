@@ -33,6 +33,14 @@ public class Plain {
         return result;
     }
 
+    public static String getType(Object object) {
+        if (object instanceof String) {
+            return String.format("'%s'", object);
+        }
+
+        return "" + object;
+    }
+
     public static void updatedFrom(List<Object> statOfElement) {
         if (statOfElement.get(1) instanceof Object[] || statOfElement.get(1) instanceof Map
                 || statOfElement.get(1) instanceof List) {
@@ -40,7 +48,7 @@ public class Plain {
                     + " From [complex value] to ", statOfElement.getFirst()));
         } else {
             STRING_BUILDER.append(String.format("Property '%s' was updated."
-                    + " From %s to ", statOfElement.getFirst(), statOfElement.get(1)));
+                    + " From %s to ", statOfElement.getFirst(), getType(statOfElement.get(1))));
         }
     }
 
@@ -49,7 +57,7 @@ public class Plain {
                 || statOfElement.get(2) instanceof List) {
             STRING_BUILDER.append("[complex value]").append("\n");
         } else {
-            STRING_BUILDER.append(String.format("%s", statOfElement.get(2))).append("\n");
+            STRING_BUILDER.append(String.format("%s", getType(statOfElement.get(2)))).append("\n");
         }
     }
 
@@ -65,7 +73,7 @@ public class Plain {
                     statOfElement.getFirst())).append("\n");
         } else {
             STRING_BUILDER.append(String.format("Property '%s' was added with value: %s",
-                    statOfElement.getFirst(), statOfElement.get(1))).append("\n");
+                    statOfElement.getFirst(), getType(statOfElement.get(1)))).append("\n");
         }
     }
 
