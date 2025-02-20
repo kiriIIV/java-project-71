@@ -7,6 +7,8 @@ https://asciinema.org/a/QreQ7kiv2iQBBCx2uXPtdR8SH
 https://asciinema.org/a/Le253d4hejltcscA2rjJWIipo
 ### Плоский формат
 https://asciinema.org/a/rX1GwEJuB9VXQxylHEqlr0fmq
+### Вывод в Json
+https://asciinema.org/a/Dh6vKjW393QnvitCvG97fYSrA
 
 ### Badges
 [![Build app](https://github.com/kiriIIV/java-project-71/actions/workflows/build.yml/badge.svg)](https://github.com/kiriIIV/java-project-71/actions/workflows/build.yml)
