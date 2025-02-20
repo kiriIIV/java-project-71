@@ -29,6 +29,7 @@ public class FormaterTest {
         Plain.cleanStringBuilder();
         Stylish.cleanStringBuilder();
         Json.clearData();
+        Differ.clearData();
     }
 
     @Test
