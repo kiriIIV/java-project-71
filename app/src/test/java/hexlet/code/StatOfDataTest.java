@@ -44,7 +44,7 @@ public class StatOfDataTest {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/smallJson2.json");
         assertEquals(1, result.size());
-        assertEquals("updated", result.getFirst().get(result.size() - 1));
+        assertEquals("updated", result.getFirst().getLast());
         assertEquals("Some value", result.getFirst().get(1));
         assertEquals(true, result.getFirst().get(2));
     }
