@@ -59,7 +59,7 @@ public class PlainTest {
 
     @Test
     public void testObject() {
-        boolean actual = Plain.isObject(new Integer[] {1, 2, 3});
+        boolean actual = Plain.isObject(new String[] {"cat", "dog", "rat"});
         assertTrue(actual);
     }
 

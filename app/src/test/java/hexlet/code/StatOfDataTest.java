@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StatOfDataTest {
 
     @BeforeEach
-    void setUp() {
+    public final void setUp() {
         StatOfData.clearData();
     }
 
@@ -20,7 +20,7 @@ public class StatOfDataTest {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/smallJson1.json");
         assertEquals(1, result.size());
-        assertEquals("same data", result.get(0).get(2));
+        assertEquals("same data", result.getFirst().get(2));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class StatOfDataTest {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/empty.json",
                 "src/test/resources/fixtures/json/smallJson1.json");
         assertEquals(1, result.size());
-        assertEquals("added", result.get(0).get(2));
+        assertEquals("added", result.getFirst().get(2));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class StatOfDataTest {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/empty.json");
         assertEquals(1, result.size());
-        assertEquals("removed", result.get(0).get(2));
+        assertEquals("removed", result.getFirst().get(2));
     }
 
     @Test
@@ -44,8 +44,8 @@ public class StatOfDataTest {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/smallJson2.json");
         assertEquals(1, result.size());
-        assertEquals("updated", result.get(0).get(3));
-        assertEquals("Some value", result.get(0).get(1));
-        assertEquals(true, result.get(0).get(2));
+        assertEquals("updated", result.getFirst().get(result.size() - 1));
+        assertEquals("Some value", result.getFirst().get(1));
+        assertEquals(true, result.getFirst().get(2));
     }
 }
