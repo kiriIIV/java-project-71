@@ -27,14 +27,14 @@ public class JsonTest {
     }
 
     @Test
-    public void test1() throws Exception {
+    public void testFormat() throws Exception {
         String actual = Json.jsonFormat(dataList);
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultFormaterJson.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void test2() throws Exception {
+    public void testEmpty() throws Exception {
         List<List<Object>> emptyList = List.of();
         String actual = Json.jsonFormat(emptyList);
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterJson.txt");

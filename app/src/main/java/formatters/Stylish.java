@@ -1,39 +1,33 @@
 package formatters;
 
-import hexlet.code.Differ;
+import hexlet.code.StatOfData;
 
 import java.util.List;
 
 public class Stylish {
-
     private static final StringBuilder STRING_BUILDER = new StringBuilder();
     private static final int COUNT_OF_INDENT = 2;
     private static final int COUNT_OF_INDENT_FOR_SAME = 4;
 
     public static String stylishFormat(List<List<Object>> statOfData) {
-
         STRING_BUILDER.append("{").append("\n");
-
         if (statOfData.isEmpty()) {
             return STRING_BUILDER.append("}").toString();
         }
-
         for (List<Object> statOfElement: statOfData) {
-            if (statOfElement.size() == Differ.SIZE_OF_UPDATED_ELEMENT) {
+            if (statOfElement.size() == StatOfData.SIZE_OF_UPDATED_ELEMENT) {
                 updatedFrom(statOfElement);
                 updatedTo(statOfElement);
-            } else if (statOfElement.get(2).equals("same data")) {
+            } else if (statOfElement.get(2).equals(StatOfData.SAME_DATA)) {
                 sameData(statOfElement);
-            } else if (statOfElement.get(2).equals("removed")) {
+            } else if (statOfElement.get(2).equals(StatOfData.REMOVED)) {
                 removed(statOfElement);
-            } else if (statOfElement.get(2).equals("added")) {
+            } else if (statOfElement.get(2).equals(StatOfData.ADDED)) {
                 added(statOfElement);
             }
         }
-
         String result = STRING_BUILDER + "}";
         cleanStringBuilder();
-
         return result;
     }
 

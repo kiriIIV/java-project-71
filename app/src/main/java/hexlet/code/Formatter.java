@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import formatters.Json;
 import formatters.Plain;
 import formatters.Stylish;
@@ -8,12 +7,16 @@ import formatters.Stylish;
 import java.util.List;
 
 public class Formatter {
-    public static String chooseFormat(List<List<Object>> data, String format) throws JsonProcessingException {
+    public static final String STYLISH = "stylish";
+    public static final String PLAIN = "plain";
+    public static final String JSON = "json";
+
+    public static String chooseFormat(List<List<Object>> data, String format) throws Exception {
         return switch (format) {
-            case "stylish" -> Stylish.stylishFormat(data);
-            case "plain" -> Plain.plainFormat(data);
-            case "json" -> Json.jsonFormat(data);
-            default -> "Invalid format!";
+            case STYLISH -> Stylish.stylishFormat(data);
+            case PLAIN -> Plain.plainFormat(data);
+            case JSON -> Json.jsonFormat(data);
+            default -> throw new Exception("Invalid format!");
         };
     }
 }

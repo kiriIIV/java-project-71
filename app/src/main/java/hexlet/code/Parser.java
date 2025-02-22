@@ -11,8 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 public class Parser {
-    private static ObjectMapper objectMapper;
-    private static String data;
+    private static final String JSON_FORMAT = "json";
+    private static final String YML_FORMAT = "yml";
+    private static final String YAML_FORMAT = "yaml";
 
     public static Path getPath(String readFilePath) {
         return Paths.get(readFilePath).toAbsolutePath().normalize();
@@ -28,29 +29,20 @@ public class Parser {
     }
 
     public static Map<String, Object> parseData(String readFilePath) throws Exception {
-        if (readFilePath.endsWith(".json")) {
-            jsonFormat(readFilePath);
-        } else if (readFilePath.endsWith(".yml") || readFilePath.endsWith(".yaml")) {
-            yamlFormat(readFilePath);
-        } else {
-            throw new Exception("Invalid format");
-        }
-
+        String data = readFile(readFilePath);
         if (data.trim().isEmpty()) {
             return new HashMap<String, Object>();
         }
+        String getTypeOfFile = readFilePath.substring(readFilePath.lastIndexOf(".") + 1);
+        return readData(data, getTypeOfFile);
+    }
 
+    public static Map<String, Object> readData(String data, String type) throws Exception {
+        ObjectMapper objectMapper = switch (type) {
+            case JSON_FORMAT -> new ObjectMapper();
+            case YAML_FORMAT, YML_FORMAT -> new ObjectMapper(new YAMLFactory());
+            default -> throw new Exception("Invalid format!");
+        };
         return objectMapper.readValue(data, new TypeReference<HashMap<String, Object>>() { });
     }
-
-    public static void jsonFormat(String readFilePath) throws Exception {
-        data = readFile(readFilePath);
-        objectMapper = new ObjectMapper();
-    }
-
-    public static void yamlFormat(String readFilePath) throws Exception {
-        data = readFile(readFilePath);
-        objectMapper = new ObjectMapper(new YAMLFactory());
-    }
-
 }

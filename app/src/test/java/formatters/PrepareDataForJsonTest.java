@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class PrepareDataForJsonTest {
 
     @Test
-    public void test1() {
+    public void testUpdatedElement() {
         PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", true,
                 false, "updated");
         assertEquals("key", prepareDataForJson.getKey());
@@ -18,7 +18,7 @@ public class PrepareDataForJsonTest {
     }
 
     @Test
-    public void test2() {
+    public void testDefaultElement() {
         PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", null, "removed");
         assertEquals("key", prepareDataForJson.getKey());
         assertNull(prepareDataForJson.getValue());

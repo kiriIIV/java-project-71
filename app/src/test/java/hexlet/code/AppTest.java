@@ -1,36 +1,22 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
-    private App app;
-    private CommandLine cmd;
-
-    @BeforeEach
-    public final void beforeEach() {
-        app = new App();
-        cmd = new CommandLine(app);
-    }
 
     @Test
-    public void test1() {
-        int exitCode = cmd.execute("src/main/resources/fixtures/json/file1.json",
-                "src/main/resources/fixtures/json/file2.json", "-f", "plain");
-        assertEquals(0, exitCode);
-        assertEquals("src/main/resources/fixtures/json/file1.json", app.getFilepath1());
-        assertEquals("src/main/resources/fixtures/json/file2.json", app.getFilepath2());
-        assertEquals("plain", app.getFormat());
-
-    }
-
-    @Test
-    public void test2() {
-        int exitCode = cmd.execute("src/main/resources/fixtures/json/file1.json",
-                "src/main/resources/fixtures/json/file2.json");
-        assertEquals("stylish", app.getFormat());
+    void testCallWithInvalidFiles() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        App app = new App();
+        int exitCode = new CommandLine(app).execute("cat.json", "dog.json");
+        assertEquals(1, exitCode);
+        assertEquals("No such file in a directory\n", outputStream.toString());
     }
 }

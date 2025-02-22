@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlainTest {
 
@@ -27,17 +29,43 @@ public class PlainTest {
     }
 
     @Test
-    public void test1() throws Exception {
+    public void testData() throws Exception {
         String actual = Plain.plainFormat(dataList);
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultFormaterPlain.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void test2() throws Exception {
+    public void testEmptyData() throws Exception {
         List<List<Object>> emptyList = List.of();
         String actual = Plain.plainFormat(emptyList);
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterPlain.txt");
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testString() {
+        String actual = Plain.isString("House");
+        String expected = "'House'";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNotString() {
+        String actual = Plain.isString(true);
+        String expected = "true";
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testObject() {
+        boolean actual = Plain.isObject(new Integer[] {1, 2, 3});
+        assertTrue(actual);
+    }
+
+    @Test
+    public void testNotObject() {
+        boolean actual = Plain.isObject("Cat");
+        assertFalse(actual);
     }
 }

@@ -31,72 +31,62 @@ public class DifferTest {
     public final void beforeEach() {
         Stylish.cleanStringBuilder();
         Plain.cleanStringBuilder();
-        Differ.clearData();
         Json.clearData();
     }
 
     @Test
-    public void testJsonDiffer1() throws Exception {
+    public void testJsonDiffer() throws Exception {
         var actual = Differ.generate(jsonPath1, jsonPath2, "stylish");
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish1.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testJsonDiffer2() throws Exception {
+    public void testJsonDifferSecondEmpty() throws Exception {
         var actual = Differ.generate(jsonPath1, jsonEmptyPath, "stylish");
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish2.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testJsonDiffer3() throws Exception {
+    public void testJsonDifferFirstEmpty() throws Exception {
         var actual = Differ.generate(jsonEmptyPath, jsonPath2);
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish3.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testJsonDiffer4() throws Exception {
+    public void testJsonDifferBothEmpty() throws Exception {
         var actual = Differ.generate(jsonEmptyPath, jsonEmptyPath);
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish4.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testJYAMLDiffer1() throws Exception {
+    public void testJYAMLDiffer() throws Exception {
         var actual = Differ.generate(yamlPath1, yamlPath2, "plain");
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain1.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testYAMLDiffer2() throws Exception {
+    public void testYAMLDifferSecondEmpty() throws Exception {
         var actual = Differ.generate(yamlPath1, yamlEmptyPath, "plain");
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain2.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testYAMLDiffer3() throws Exception {
+    public void testYAMLDifferFirstEmpty() throws Exception {
         var actual = Differ.generate(yamlEmptyPath, yamlPath2, "plain");
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain3.txt");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testYAMLDiffer4() throws Exception {
+    public void testYAMLDifferBothEmpty() throws Exception {
         var actual = Differ.generate(yamlEmptyPath, yamlEmptyPath, "plain");
-        Differ.clearData();
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain4.txt");
         assertEquals(expected, actual);
     }
-
 }

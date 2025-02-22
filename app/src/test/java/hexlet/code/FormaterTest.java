@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import formatters.Json;
 import formatters.Plain;
 import formatters.Stylish;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FormaterTest {
 
@@ -29,11 +29,10 @@ public class FormaterTest {
         Plain.cleanStringBuilder();
         Stylish.cleanStringBuilder();
         Json.clearData();
-        Differ.clearData();
     }
 
     @Test
-    public void test1() throws JsonProcessingException {
+    public void testStylish() throws Exception {
         String actual = Formatter.chooseFormat(dataList, "stylish");
         Stylish.cleanStringBuilder();
         String expected = Stylish.stylishFormat(dataList);
@@ -41,7 +40,7 @@ public class FormaterTest {
     }
 
     @Test
-    public void test2() throws JsonProcessingException {
+    public void testPlain() throws Exception {
         String actual = Formatter.chooseFormat(dataList, "plain");
         Plain.cleanStringBuilder();
         String expected = Plain.plainFormat(dataList);
@@ -49,7 +48,7 @@ public class FormaterTest {
     }
 
     @Test
-    public void test3() throws JsonProcessingException {
+    public void testJson() throws Exception {
         String actual = Formatter.chooseFormat(dataList, "json");
         Json.clearData();
         String expected = Json.jsonFormat(dataList);
@@ -57,9 +56,7 @@ public class FormaterTest {
     }
 
     @Test
-    public void test4()  throws JsonProcessingException {
-        String actual = Formatter.chooseFormat(dataList, "12345");
-        String expected = "Invalid format!";
-        assertEquals(expected, actual);
+    public void testException()  throws Exception {
+        assertThrows(Exception.class, () -> Formatter.chooseFormat(dataList, "12345"));
     }
 }
