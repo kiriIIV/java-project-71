@@ -36,7 +36,7 @@ public class DifferTest {
 
     @Test
     public void testJsonDiffer() throws Exception {
-        var actual = Differ.generate(jsonPath1, jsonPath2, "stylish");
+        String actual = Differ.generate(jsonPath1, jsonPath2, "stylish");
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish1.txt");
 
@@ -45,7 +45,7 @@ public class DifferTest {
 
     @Test
     public void testJsonDifferSecondEmpty() throws Exception {
-        var actual = Differ.generate(jsonPath1, jsonEmptyPath, "stylish");
+        String actual = Differ.generate(jsonPath1, jsonEmptyPath, "stylish");
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish2.txt");
 
@@ -54,7 +54,7 @@ public class DifferTest {
 
     @Test
     public void testJsonDifferFirstEmpty() throws Exception {
-        var actual = Differ.generate(jsonEmptyPath, jsonPath2);
+        String actual = Differ.generate(jsonEmptyPath, jsonPath2);
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish3.txt");
 
@@ -63,7 +63,7 @@ public class DifferTest {
 
     @Test
     public void testJsonDifferBothEmpty() throws Exception {
-        var actual = Differ.generate(jsonEmptyPath, jsonEmptyPath);
+        String actual = Differ.generate(jsonEmptyPath, jsonEmptyPath);
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferStylish4.txt");
 
@@ -72,7 +72,7 @@ public class DifferTest {
 
     @Test
     public void testJYAMLDiffer() throws Exception {
-        var actual = Differ.generate(yamlPath1, yamlPath2, "plain");
+        String actual = Differ.generate(yamlPath1, yamlPath2, "plain");
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain1.txt");
 
@@ -81,7 +81,7 @@ public class DifferTest {
 
     @Test
     public void testYAMLDifferSecondEmpty() throws Exception {
-        var actual = Differ.generate(yamlPath1, yamlEmptyPath, "plain");
+        String actual = Differ.generate(yamlPath1, yamlEmptyPath, "plain");
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain2.txt");
 
@@ -90,7 +90,7 @@ public class DifferTest {
 
     @Test
     public void testYAMLDifferFirstEmpty() throws Exception {
-        var actual = Differ.generate(yamlEmptyPath, yamlPath2, "plain");
+        String actual = Differ.generate(yamlEmptyPath, yamlPath2, "plain");
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain3.txt");
 
@@ -99,7 +99,7 @@ public class DifferTest {
 
     @Test
     public void testYAMLDifferBothEmpty() throws Exception {
-        var actual = Differ.generate(yamlEmptyPath, yamlEmptyPath, "plain");
+        String actual = Differ.generate(yamlEmptyPath, yamlEmptyPath, "plain");
 
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultDifferPlain4.txt");
 

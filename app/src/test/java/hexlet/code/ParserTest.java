@@ -63,7 +63,7 @@ public class ParserTest {
     }
     @Test
     public void testParseJsonData() throws Exception {
-        var actual = Parser.parseData("src/test/resources/fixtures/json/flat.json");
+        Map<String, Object> actual = Parser.parseData("src/test/resources/fixtures/json/flat.json");
 
         Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", true,
                 "proxy", "123.234.53.22", "follow", false);
@@ -72,7 +72,7 @@ public class ParserTest {
     }
     @Test
     public void testParseJsonEmptyData() throws Exception {
-        var actual = Parser.parseData("src/test/resources/fixtures/json/empty.json");
+        Map<String, Object> actual = Parser.parseData("src/test/resources/fixtures/json/empty.json");
 
         Map<String, Object> expected = Map.of();
 
@@ -84,7 +84,7 @@ public class ParserTest {
     }
     @Test
     public void testParseYAMLData() throws Exception {
-        var actual = Parser.parseData("src/test/resources/fixtures/yaml/flat.yaml");
+        Map<String, Object> actual = Parser.parseData("src/test/resources/fixtures/yaml/flat.yaml");
 
         Map<String, Object> expected = Map.of("host", "hexlet.io", "timeout", false,
                 "proxy", "123.234.53.22", "follow", false);
@@ -93,7 +93,7 @@ public class ParserTest {
     }
     @Test
     public void testParseYAMLEmptyData() throws Exception {
-        var actual = Parser.parseData("src/test/resources/fixtures/yaml/empty.yaml");
+        Map<String, Object> actual = Parser.parseData("src/test/resources/fixtures/yaml/empty.yaml");
 
         Map<String, Object> expected = Map.of();
 
