@@ -28,15 +28,19 @@ public class StylishTest {
     @Test
     public void testData() throws Exception {
         String actual = Stylish.stylishFormat(dataList);
+
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultFormaterStylish.txt");
+
         assertEquals(expected, actual);
     }
 
     @Test
     public void testEmptyData() throws Exception {
         List<List<Object>> emptyList = List.of();
-        String expected = Stylish.stylishFormat(emptyList);
-        String actual = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterStylish.txt");
+        String actual = Stylish.stylishFormat(emptyList);
+
+        String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterStylish.txt");
+
         assertEquals(expected, actual);
     }
 }

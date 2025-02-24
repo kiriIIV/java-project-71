@@ -19,6 +19,7 @@ public class StatOfDataTest {
     public void testSameData() throws Exception {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/smallJson1.json");
+
         assertEquals(1, result.size());
         assertEquals("same data", result.getFirst().get(2));
     }
@@ -27,6 +28,7 @@ public class StatOfDataTest {
     public void testAdded() throws Exception {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/empty.json",
                 "src/test/resources/fixtures/json/smallJson1.json");
+
         assertEquals(1, result.size());
         assertEquals("added", result.getFirst().get(2));
     }
@@ -35,6 +37,7 @@ public class StatOfDataTest {
     public void testRemoved() throws Exception {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/empty.json");
+
         assertEquals(1, result.size());
         assertEquals("removed", result.getFirst().get(2));
     }
@@ -43,6 +46,7 @@ public class StatOfDataTest {
     public void testUpdated() throws Exception {
         ArrayList<List<Object>> result = StatOfData.getStatOfData("src/test/resources/fixtures/json/smallJson1.json",
                 "src/test/resources/fixtures/json/smallJson2.json");
+
         assertEquals(1, result.size());
         assertEquals("updated", result.getFirst().getLast());
         assertEquals("Some value", result.getFirst().get(1));

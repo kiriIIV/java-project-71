@@ -34,24 +34,27 @@ public class FormaterTest {
     @Test
     public void testStylish() throws Exception {
         String actual = Formatter.chooseFormat(dataList, "stylish");
-        Stylish.cleanStringBuilder();
+
         String expected = Stylish.stylishFormat(dataList);
+
         assertEquals(expected, actual);
     }
 
     @Test
     public void testPlain() throws Exception {
         String actual = Formatter.chooseFormat(dataList, "plain");
-        Plain.cleanStringBuilder();
+
         String expected = Plain.plainFormat(dataList);
+
         assertEquals(expected, actual);
     }
 
     @Test
     public void testJson() throws Exception {
         String actual = Formatter.chooseFormat(dataList, "json");
-        Json.clearData();
+
         String expected = Json.jsonFormat(dataList);
+
         assertEquals(expected, actual);
     }
 

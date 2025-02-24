@@ -22,17 +22,14 @@ public class StatOfData {
         Set<String> setOfKeys = new TreeSet<>(firstData.keySet());
         setOfKeys.addAll(secondData.keySet());
         for (String key : setOfKeys) {
-            if (firstData.containsKey(key)) {
-                if (secondData.containsKey(key)) {
-                    if ((firstData.get(key) + "").equals(secondData.get(key) + "")) {
-                        addStatusOfKey(key, firstData.get(key), SAME_DATA);
-                    } else {
-                        addStatusOfKey(key, firstData.get(key), secondData.get(key), UPDATED);
-                    }
-                } else {
-                    addStatusOfKey(key, firstData.get(key), REMOVED);
-                }
-            } else {
+            boolean keyInBothData = firstData.containsKey(key) && secondData.containsKey(key);
+            if (keyInBothData && (firstData.get(key) + "").equals(secondData.get(key) + "")) {
+                addStatusOfKey(key, firstData.get(key), SAME_DATA);
+            } else if (keyInBothData) {
+                addStatusOfKey(key, firstData.get(key), secondData.get(key), UPDATED);
+            } else if (firstData.containsKey(key)) {
+                addStatusOfKey(key, firstData.get(key), REMOVED);
+            } else if (secondData.containsKey(key)) {
                 addStatusOfKey(key, secondData.get(key), ADDED);
             }
         }

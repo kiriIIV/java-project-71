@@ -31,7 +31,9 @@ public class PlainTest {
     @Test
     public void testData() throws Exception {
         String actual = Plain.plainFormat(dataList);
+
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultFormaterPlain.txt");
+
         assertEquals(expected, actual);
     }
 
@@ -39,33 +41,41 @@ public class PlainTest {
     public void testEmptyData() throws Exception {
         List<List<Object>> emptyList = List.of();
         String actual = Plain.plainFormat(emptyList);
+
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterPlain.txt");
+
         assertEquals(expected, actual);
     }
 
     @Test
     public void testString() {
         String actual = Plain.isString("House");
+
         String expected = "'House'";
+
         assertEquals(expected, actual);
     }
 
     @Test
     public void testNotString() {
         String actual = Plain.isString(true);
+
         String expected = "true";
+
         assertEquals(expected, actual);
     }
 
     @Test
     public void testObject() {
         boolean actual = Plain.isObject(new String[] {"cat", "dog", "rat"});
+
         assertTrue(actual);
     }
 
     @Test
     public void testNotObject() {
         boolean actual = Plain.isObject("Cat");
+
         assertFalse(actual);
     }
 }

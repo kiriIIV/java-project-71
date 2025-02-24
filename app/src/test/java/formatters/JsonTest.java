@@ -29,7 +29,9 @@ public class JsonTest {
     @Test
     public void testFormat() throws Exception {
         String actual = Json.jsonFormat(dataList);
+
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/resultFormaterJson.txt");
+
         assertEquals(expected, actual);
     }
 
@@ -37,7 +39,9 @@ public class JsonTest {
     public void testEmpty() throws Exception {
         List<List<Object>> emptyList = List.of();
         String actual = Json.jsonFormat(emptyList);
+
         String expected = Parser.readFile("src/test/resources/fixtures/resultFiles/emptyFormaterJson.txt");
+
         assertEquals(expected, actual);
     }
 }

@@ -26,11 +26,11 @@ public class App implements Callable<Integer> {
         try {
             String diff = Differ.generate(firstFilepath, secondFilepath, format);
             System.out.println(diff);
+            return 0;
         } catch (Exception e) {
             System.out.println("No such file in a directory");
             return 1;
         }
-        return 0;
     }
 
     public static void main(String[] args) throws Exception {

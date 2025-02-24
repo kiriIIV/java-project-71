@@ -11,6 +11,7 @@ public class PrepareDataForJsonTest {
     public void testUpdatedElement() {
         PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", true,
                 false, "updated");
+
         assertEquals("key", prepareDataForJson.getKey());
         assertEquals(true, prepareDataForJson.getOldValue());
         assertEquals(false, prepareDataForJson.getNewValue());
@@ -20,6 +21,7 @@ public class PrepareDataForJsonTest {
     @Test
     public void testDefaultElement() {
         PrepareDataForJson prepareDataForJson = new PrepareDataForJson("key", null, "removed");
+
         assertEquals("key", prepareDataForJson.getKey());
         assertNull(prepareDataForJson.getValue());
         assertEquals("removed", prepareDataForJson.getStatusKey());

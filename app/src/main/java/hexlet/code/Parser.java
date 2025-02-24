@@ -38,11 +38,15 @@ public class Parser {
     }
 
     public static Map<String, Object> readData(String data, String type) throws Exception {
-        ObjectMapper objectMapper = switch (type) {
-            case JSON_FORMAT -> new ObjectMapper();
-            case YAML_FORMAT, YML_FORMAT -> new ObjectMapper(new YAMLFactory());
+        switch (type) {
+            case JSON_FORMAT -> {
+                return new ObjectMapper().readValue(data, new TypeReference<HashMap<String, Object>>() { });
+            }
+            case YAML_FORMAT, YML_FORMAT -> {
+                return new ObjectMapper(new YAMLFactory())
+                        .readValue(data, new TypeReference<HashMap<String, Object>>() { });
+            }
             default -> throw new Exception("Invalid format!");
-        };
-        return objectMapper.readValue(data, new TypeReference<HashMap<String, Object>>() { });
+        }
     }
 }
